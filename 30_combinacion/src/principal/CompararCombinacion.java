@@ -1,5 +1,6 @@
 package principal;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CompararCombinacion {
@@ -9,6 +10,10 @@ public class CompararCombinacion {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Introducetu combinación: ");
 		combinacion=sc.nextLine();
+		/* Elimina duplicados de la cadena
+		combinacion=Arrays.stream (combinacion.split(","))
+				.distinct()
+				.collect(Collectors.joining (","));*/
 		String [] micombinacion= combinacion.split(",");
 		int [] combifinal = convertirCombinacion (micombinacion); 
 		
@@ -29,12 +34,11 @@ public class CompararCombinacion {
 		
 		int aciertosTotales = aciertos(generados,combifinal);
 		
-		System.out.println("La combinación ganadora es: ");
-		for (int h=0;h<generados.length;h++) {
+		System.out.println("La combinación ganadora es: "+ Arrays.toString(generados));
+		/*for (int h=0;h<generados.length;h++) {
 			System.out.print(generados[h]+", ");
 			
-		}
-		System.out.println();
+		}*/
 		System.out.println("Ha tenido "+aciertosTotales+ " aciertos");
 
 	}
