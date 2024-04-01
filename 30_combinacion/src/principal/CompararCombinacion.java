@@ -68,6 +68,7 @@ public class CompararCombinacion {
 			for (int j=0+i;j<combifinal.length;j++) {
 				if (generados[i]==combifinal[j]) {
 					aciertos++;
+					break;
 				}
 			}
 		}
