@@ -33,7 +33,7 @@ public class ComprobarDireccionesCompleto {
 		}
 		//Eliminamos la última coma que se añade
 		//cadenaDominios=cadenaDominios.substring(0,cadenaDominios.length()-1);
-		cadenaDominios.delete(cadenaDominios.length()-1,cademaDominios.length());
+		cadenaDominios.delete(cadenaDominios.length()-1,cadenaDominios.length());
 		//Transformamos StringBuilder en String para poder llamar a split
 		return cadenaDominios.toString().split(",");
 		}
