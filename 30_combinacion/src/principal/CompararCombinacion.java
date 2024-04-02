@@ -2,6 +2,7 @@ package principal;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CompararCombinacion {
 
@@ -10,10 +11,10 @@ public class CompararCombinacion {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Introducetu combinación: ");
 		combinacion=sc.nextLine();
-		/* Elimina duplicados de la cadena
-		combinacion=Arrays.stream (combinacion.split(","))
+		//Elimina duplicados de la cadena
+		combinacion=Arrays.stream(combinacion.split(","))
 				.distinct()
-				.collect(Collectors.joining (","));*/
+				.collect(Collectors.joining(","));
 		String [] micombinacion= combinacion.split(",");
 		int [] combifinal = convertirCombinacion (micombinacion); 
 		
