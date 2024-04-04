@@ -14,7 +14,6 @@ public class NotasMenu {
 		do {
 			//presentar menú
 			// leer y comprobar opción elegida
-			//presentarMenu ();
 			presentarMenu();
 			opcion=sc.nextInt();
 			switch (opcion) {
