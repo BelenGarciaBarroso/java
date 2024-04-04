@@ -72,7 +72,7 @@ public class EmpleadosView {
 		System.out.println("Edad:");
 		int edad=Integer.parseInt(sc.nextLine());
 		
-		EmpleadosModel emp= new EmpleadosModel();
+		EmpleadosModel emp= new EmpleadosModel(codigo, nombre, email, edad);
 		
 		if (!service.agregarEmpleado(emp)) {
 			System.out.println("Añadido");
@@ -95,7 +95,7 @@ public class EmpleadosView {
 		if (nombre==null) {
 			System.out.println("No existe empleado con ese código");
 		}else {
-			System.out.println("El nombre del empleado es: "+nombre);
+			System.out.println("El nombre del empleado es: "+nombre.getNombre());
 		}
 	}
 	
@@ -104,11 +104,11 @@ public class EmpleadosView {
 		Scanner sc=new Scanner (System.in);
 		System.out.println("Código empleado:");
 		int codigo=Integer.parseInt(sc.nextLine());
-		String nombre=service.eliminarEmpleado(codigo);
+		EmpleadosModel nombre=service.eliminarEmpleado(codigo);
 		if (nombre==null) {
 			System.out.println("No existe empleado con ese código");
 		}else {
-			System.out.println("El nombre del empleado eliminado es: "+nombre);
+			System.out.println("El nombre del empleado eliminado es: "+nombre.getNombre());
 		}
 	}
 	
@@ -117,7 +117,12 @@ public class EmpleadosView {
 		EmpleadosModel[] empleados=service.listadoEmpleados();
 		//System.out.println("Empleados: "+Arrays.toString(empleados));
 		for (EmpleadosModel e:empleados) {
-			System.out.println("Nombre: "+e.getNombre()+" Edad: "+e.getEdad());
+			System.out.println("-----------------------------------------");
+			System.out.println("Codigo: "+e.getCodigo());
+			System.out.println("Nombre: "+e.getNombre());
+			System.out.println("Edad: "+e.getEdad());
+			System.out.println("Email: "+e.getEmail());		
 		}
+		System.out.println("-----------------------------------------");
 	}
 }
