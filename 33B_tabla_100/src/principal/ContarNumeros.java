@@ -52,17 +52,17 @@ public class ContarNumeros {
 		return contador;
 	}
 	
-	//CONTAR NÚMEROS MENOS QUE NUMERO INTRODUCIDO SIN DUPLICADOS *************************
+	//CONTAR NÚMEROS MENORES QUE NÚMERO INTRODUCIDO SIN DUPLICADOS *************************
 	
 	static int contarMenores (int _numero, ArrayList<Integer> _aleatorios, int _rnd) {
 		int contador = 0;
 		Integer[] sumaMenores= new Integer [_numero-1]; //Creo un array con el tamaño del número elegido menos 1
 		for (Integer n:_aleatorios) { 
 			if (n.intValue()<_numero) {
-				sumaMenores[n-1]=1;	
+				sumaMenores[n-1]=0;	
 			}
 		}
-		for (Integer s:sumaMenores) { // sumo los valores del array que cuenta los duplicados
+		for (Integer s:sumaMenores) { // sumo los valores que no están vacíos.
 			if (s != null) {
 			   contador=contador + s.intValue();
 			}
