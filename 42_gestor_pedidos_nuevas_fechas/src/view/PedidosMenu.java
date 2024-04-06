@@ -32,20 +32,25 @@ public class PedidosMenu {
 					pedidosEntreFechas();
 					break;
 				case 4:
+					pedidoMasProximo();
+					break;
+					
+				case 5:
 					System.out.println("Adios!");
 					break;
 				
 				default:
 					System.out.println("Opción no válida!");
 			}
-		}while(opcion!=4);
+		}while(opcion!=5);
 	}
 	static void presentarMenu() {
 		System.out.println("""
 				1.- Agregar Pedido
 				2.- Pedido más reciente
 				3.- Pedidos entre fechas
-				4.- Salir
+				4.- Pedido próximo a fecha
+				5.- Salir
 				
 				""");
 	}
@@ -82,5 +87,14 @@ public class PedidosMenu {
 			System.out.println("Fecha pedido: "+p.getFechaPedido().format(sdf)+" ");
 		}
 	}
-
+	
+	static void pedidoMasProximo () {
+	Scanner sc=new Scanner(System.in);
+	DateTimeFormatter sdf=DateTimeFormatter.ofPattern("dd/MM/yyyy");	
+	System.out.println("Fecha busqueda (dia/mes/año):");
+	LocalDate fecha1=LocalDate.parse(sc.nextLine(),sdf);
+	Pedido pedidoCercano = service.pedidoCercano(fecha1);
+	System.out.println("El pedido más cercano a "+fecha1+" es del día "+pedidoCercano.getFechaPedido());
+	System.out.println("El producto es "+pedidoCercano.getProducto()+" con "+pedidoCercano.getUnidades()+" unidades");
+	}
 }
