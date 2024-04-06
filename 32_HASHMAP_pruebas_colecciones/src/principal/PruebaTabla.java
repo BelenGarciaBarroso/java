@@ -1,0 +1,32 @@
+package principal;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
+
+public class PruebaTabla {
+
+	public static void main(String[] args) {
+		HashMap <String,Integer> ciudades = new HashMap <String,Integer>();
+		ciudades.put("Madrid",3200000);
+		ciudades.put("Zaragoza",300000);
+		ciudades.put("Cáceres",100000);
+		ciudades.put("Cáceres",120000);
+		System.out.println(ciudades.get("Cáceres")); // Devuelve 120000
+		
+		//Recorrido de un HashMap
+		//claves: 
+		Set<String> claves =ciudades.keySet();
+		for (String n:claves) {
+			System.out.println(n);
+		}
+		// valores:
+		Collection<Integer> valores=ciudades.values();
+		for (Integer n:valores) {
+			System.out.println(n);
+		}
+		
+		
+	}
+
+}
