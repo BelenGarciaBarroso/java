@@ -9,7 +9,11 @@ import java.util.Scanner;
 public class GuardarCursosFichero {
 
 	public static void main(String[] args) {
-		String ruta="dias.txt";
+		
+		//Solicitamos por teclado la introducción de un
+		//nombre y guardaremos en un fichero todos los
+		//cursos que contengan ese nombre
+		
 		String [] cursos= {
 				"Java básico",
 				"Python para principaiantes",
@@ -24,16 +28,20 @@ public class GuardarCursosFichero {
 		Scanner sc=new Scanner(System.in);	
 		System.out.println("Introduce palabra:"); 
 		String palabra=sc.nextLine();
-		buscarPalabra (cursos, palabra)
-		
+		buscarGuardarPalabra(cursos,palabra);
+	}
+	
+	
+	// 
+	static void buscarGuardarPalabra (String[] _cursos, String palabra) {
+		String ruta="dias.txt";
 		try (FileOutputStream fos=new FileOutputStream(ruta, true);
 				PrintStream out=new PrintStream(fos);) {
-			out.println("lunes");
-			out.println("martes");
-			out.println("miercoles");
-			out.println("jueves");
-			System.out.println("Información añadia al fichero");
-			
+			for (String c:_cursos) {
+				if (c.contains(palabra)) {
+					out.println(c);
+				}
+			}
 		}
 		catch (FileNotFoundException ex) {
 			ex.printStackTrace();
@@ -41,25 +49,10 @@ public class GuardarCursosFichero {
 		catch (IOException ex) {
 			ex.printStackTrace();
 		}
-		
-			//Solicitamos por teclado la introducción de un
-			//nombre y guardaremos en un fichero todos los
-			//cursos que contengan ese nombre
-		
-		
-		static String [] buscarPalabra (String[] _cursos, String palabra) {
-			String [] conPalabra;
-			int contador=0;
-			for (String c:_cursos) {
-				if (c.contains(palabra)) {
-					conPalabra[contador]=c;
-				}
-			}
-		return conPalabra;
+			
 		}
 		
-
 	}
 
-}
+
  
