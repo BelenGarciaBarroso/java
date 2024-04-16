@@ -1,4 +1,4 @@
-package principal;
+ package principal;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
