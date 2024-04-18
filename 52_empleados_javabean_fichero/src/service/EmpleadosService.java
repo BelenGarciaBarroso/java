@@ -1,6 +1,7 @@
 package service;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import model.Empleados;
-
 import utilidades.Util;
 
 public class EmpleadosService {
@@ -89,41 +89,46 @@ public class EmpleadosService {
 	//*************************************************************************
 	public void eliminarEmpleado (int codigo) {
 		boolean cont=true;
+		File archivo = new File("empleados.csv");
 		ArrayList <Empleados> listafinal= new ArrayList<>();
-		try (FileReader fr=new FileReader(fichero);
-				BufferedReader bf=new BufferedReader(fr);){
-			String linea;
-			
-			while ((linea=bf.readLine())!=null){ 
-				p=Util.convertirCadenaAEmpleados(linea);
-				
-				if (codigo!=p.getCodigo()) {
-					listafinal.add(p);
-				}else {
-					System.out.println("Empleado eliminado");
-					cont=false;
-				}
-				
-			}
-		}
-		catch(IOException ex) {
-			ex.printStackTrace();
-		}
-		
-		try (PrintStream out=new PrintStream(fichero)){	
-			if (!cont) {
-				for (Empleados e:listafinal) {
-					out.println(Util.convertirEmpleadosACadena(e));
-				}
-			}else {
-				System.out.println("El empleado no existe");
-			}
-		}
-
-		catch(IOException ext) {
-			ext.printStackTrace();
-		}
+		 if (!archivo.exists()) {
+			System.out.println("El empleado no existe");
+			return;
+		}else {
+			try (FileReader fr=new FileReader(fichero);
+					BufferedReader bf=new BufferedReader(fr);){
+				String linea;
 	
+				while ((linea=bf.readLine())!=null){ 
+					p=Util.convertirCadenaAEmpleados(linea);
+					
+					if (codigo!=p.getCodigo()) {
+						listafinal.add(p);
+					}else {
+						System.out.println("Empleado eliminado");
+						cont=false;
+					}
+					
+				}
+			}
+			catch(IOException ex) {
+				ex.printStackTrace();
+			}
+			
+			try (PrintStream out=new PrintStream(fichero)){	
+				if (!cont) {
+					for (Empleados e:listafinal) {
+						out.println(Util.convertirEmpleadosACadena(e));
+					}
+				}else {
+					System.out.println("El empleado no existe");
+				}
+			}
+	
+			catch(IOException ext) {
+				ext.printStackTrace();
+			}
+		}
 	}
 
 	
